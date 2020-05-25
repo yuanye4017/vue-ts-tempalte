@@ -16,3 +16,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  background: $bg;
+}
+</style>
