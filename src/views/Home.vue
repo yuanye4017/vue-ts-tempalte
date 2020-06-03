@@ -1,25 +1,40 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <van-button type="default">默认按钮</van-button>
+    <van-button type="info">信息按钮</van-button>
+    <van-button type="warning">警告按钮</van-button>
+    <van-button type="danger">危险按钮</van-button>
+    <div class="flex">
+      <div class="flex__item"></div>
+      <div class="flex__item"></div>
+      <div class="flex__item"></div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { Button } from "vant";
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    [Button.name]: Button
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.home {
-  background: $bg;
-  transform: rotate(3deg);
+// .home {
+//   background: $bg;
+//   transform: rotate(3deg);
+// }
+.flex {
+  display: flex;
+  justify-content: space-between;
+  &__item {
+    width: 100px;
+    height: 100px;
+    background: orange;
+  }
 }
 </style>
