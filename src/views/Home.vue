@@ -20,5 +20,6 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: $bg;
+  transform: rotate(3deg);
 }
 </style>
