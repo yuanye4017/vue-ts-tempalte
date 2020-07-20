@@ -1,0 +1,16 @@
+// variables.scss
+
+// Base color
+$bg:#324157;
+
+// Sidebar
+$subMenuBg:#1f2d3d;
+
+// Login page
+$loginBg: #2d3a4b;
+
+// The :export directive is the magic sauce for webpack
+// https://mattferderer.com/use-sass-variables-in-typescript-and-javascript
+:export {
+  subMenuBg: $subMenuBg;
+}
