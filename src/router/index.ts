@@ -1,23 +1,62 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Layout from "@/layout/index.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
+    path: "/redirect/:path(.*)",
+    name: "edirect",
+    component: () => import("@/views/redirect/index.vue")
+  },
+  {
     path: "/",
-    redirect: "/home"
+    component: Layout,
+    redirect: "/home",
+    children: [
+      {
+        path: "home",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/home/index.vue"),
+        name: "Home",
+        meta: {
+          title: "首页"
+        }
+      }
+    ]
   },
   {
-    path: "/home",
-    component: Home
+    path: "/",
+    component: Layout,
+    redirect: "/follow",
+    children: [
+      {
+        path: "follow",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/follow/index.vue"),
+        name: "Follow",
+        meta: {
+          title: "关注"
+        }
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/",
+    component: Layout,
+    redirect: "/my",
+    children: [
+      {
+        path: "my",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/my/index.vue"),
+        name: "My",
+        meta: {
+          title: "我的"
+        }
+      }
+    ]
   },
   {
     path: "/login",

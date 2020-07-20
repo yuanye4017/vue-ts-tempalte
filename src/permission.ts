@@ -9,13 +9,14 @@ NProgress.configure({ showSpinner: false });
 
 const whiteList = ["/login"];
 
-const getPageTitle = (key: string) => {
-  console.log(key);
-  return `${settings.title}`;
+const getPageTitle = (title: string) => {
+  return title || settings.title;
 };
 
 router.beforeEach(async (to: Route, _: Route, next: any) => {
   NProgress.start();
+  // set page title -- 获取标题
+  document.title = getPageTitle(to.meta.title);
   if (UserModule.token) {
     if (to.path === "/login") {
       next({ path: "/" });
