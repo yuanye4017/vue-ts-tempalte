@@ -31,8 +31,8 @@ module.exports = {
     config.when(process.env.NODE_ENV === "development", config =>
       config.devtool("cheap-eval-source-map")
     );
-    // 服务的进度输出
     config.plugins.delete("progress");
+    // 服务的进度输出 打包进度百分比
     config
       .plugin("simple-progress-webpack-plugin")
       .use(require.resolve("simple-progress-webpack-plugin"), [
@@ -40,6 +40,11 @@ module.exports = {
           format: "compact"
         }
       ]);
+    config.when(process.env.use_analyzer, config =>
+      config
+        .plugin("webpack-bundle-analyzer")
+        .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin)
+    );
     config.when(process.env.NODE_ENV !== "development", config => {
       config.optimization.splitChunks({
         chunks: "all",

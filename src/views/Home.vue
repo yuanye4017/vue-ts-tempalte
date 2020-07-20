@@ -10,7 +10,7 @@
         </template>
       </van-nav-bar>
     </div>
-    <div class="home__banner">
+    <!-- <div class="home__banner">
       <van-swipe :loop="false" class="my-swipe" :width="300" :height="160">
         <van-swipe-item v-for="item in banner" :key="item.id">
           <van-image
@@ -21,7 +21,7 @@
           />
         </van-swipe-item>
       </van-swipe>
-    </div>
+    </div> -->
     <div class="home__button">
       <van-panel>
         <template #header>
@@ -79,10 +79,10 @@ export default class extends Vue {
   private banner = null;
   private showModel = false;
   created() {
-    this.$webApi.banners().then(({ data }: any) => {
-      console.log(1111, data);
-      this.banner = data;
-    });
+    // this.$webApi.banners().then(({ data }: any) => {
+    //   console.log(1111, data);
+    //   this.banner = data;
+    // });
   }
   async logout() {
     await UserModule.LogOut();
