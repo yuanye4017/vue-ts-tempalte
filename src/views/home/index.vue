@@ -10,31 +10,6 @@
         </template>
       </van-nav-bar>
     </div>
-    <!-- <div class="home__banner">
-      <van-swipe :loop="false" class="my-swipe" :width="300" :height="160">
-        <van-swipe-item v-for="item in banner" :key="item.id">
-          <van-image
-            width="100%"
-            height="100%"
-            :src="item.picUrl"
-            fit="contain"
-          />
-        </van-swipe-item>
-      </van-swipe>
-    </div> -->
-    <div class="home__button">
-      <van-panel>
-        <template #header>
-          <van-cell title="展示按钮" icon="location-o" />
-        </template>
-        <div>
-          <van-button type="default">默认按钮</van-button>
-          <van-button type="info">信息按钮</van-button>
-          <van-button type="warning">警告按钮</van-button>
-          <van-button type="danger">危险按钮</van-button>
-        </div>
-      </van-panel>
-    </div>
     <van-popup
       v-model="showModel"
       position="left"

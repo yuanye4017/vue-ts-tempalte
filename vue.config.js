@@ -40,11 +40,28 @@ module.exports = {
           format: "compact"
         }
       ]);
+    // 打包分析
     config.when(process.env.use_analyzer, config =>
       config
         .plugin("webpack-bundle-analyzer")
         .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin)
     );
+    // set svg-sprite-loader
+    config.module // svg-sprite-loader 将加载的 svg 图片拼接成 雪碧图，放到页面中，其它地方通过 <use> 复用
+      .rule("svg")
+      .exclude.add(path.resolve("src/icons"))
+      .end();
+    config.module
+      .rule("icons")
+      .test(/\.svg$/)
+      .include.add(path.resolve("src/icons"))
+      .end()
+      .use("svg-sprite-loader")
+      .loader("svg-sprite-loader")
+      .options({
+        symbolId: "icon-[name]"
+      })
+      .end();
     config.when(process.env.NODE_ENV !== "development", config => {
       config.optimization.splitChunks({
         chunks: "all",
